@@ -1,102 +1,109 @@
-// Stack implementation using array
 
-#include<stdio.h>
-int stack[100],choice,n,top,x,i;
-void push(void);
-void pop(void);
-void peek(void);
-void display(void);
-int main()
+/* 
+Aim : Write a program to implement stack using arrays.
+Name : Aman Kumar Verma
+Roll No. : 2000300130016
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#define STACK_MAX_SIZE 10
+
+int arr[STACK_MAX_SIZE];
+int top =-1;
+
+void push(int ele)
 {
-    top=-1;
-    printf("\n Enter the size of STACK[100]:");
-    scanf("%d",&n);
-    printf("\n\t STACK OPERATIONS USING ARRAY");
-    printf("\n\t 1.PUSH\n\t 2.POP\n\t 3.PEEK\n\t 4.DISPLAY\n\t 5.EXIT");
-    do
-    {
-        printf("\n Enter the Choice:");
-        scanf("%d",&choice);
-        switch(choice)
-        {
-            case 1:
-            {
-                push();
-                break;
-            }
-            case 2:
-            {
-                pop();
-                break;
-            }
-            case 3:
-            {
-                peek();
-                break;
-            }
-            case 4:
-            {
-                display(); 
-                break;
-            }
-            case 5:
-            {
-                printf("\n\t EXIT POINT");
-                break;
-            }
-            default:
-            {
-                printf ("\n\t Please Enter a Valid Choice(1/2/3/4/5)");
-            }
-                
-        }
-    }
-    while(choice!=5);
-    return 0;
-}
-void push()
-{
-    if(top>=n-1)
-    {
-        printf("\n\tSTACK is over flow");
-        
-    }
-    else
-    {
-        printf(" Enter a value to be pushed:");
-        scanf("%d",&x);
-        top++;
-        stack[top]=x;
-    }
+	if(top==STACK_MAX_SIZE-1)
+	{
+		printf("Stack is overflow.");
+	}
+	else {
+		top=top+1;
+		arr[top]=ele;
+		printf("Successfully pushed.");
+	}
+	printf("\n");
 }
 void pop()
 {
-    if(top<=-1)
-    {
-        printf("\n\t Stack is under flow");
-    }
-    else
-    {
-        printf("\n\t The popped elements is %d",stack[top]);
-        top--;
-    }
-}
-void peek()
-{
-    return stack[top];
+	if(top==-1)
+	{
+		printf("Stack is underflow.");
+	}
+	else
+	{
+		printf("Popped value = %d",arr[top]);
+		top = top-1;
+	}
+	printf("\n");
 }
 void display()
 {
-    if(top>=0)
-    {
-        printf("\n The elements in STACK \n");
-        for(i=top; i>=0; i--)
-            printf("\n%d",stack[i]);
-        printf("\n Press Next Choice");
-    }
-    else
-    {
-        printf("\n The STACK is empty");
-    }
-   
+	int i;
+	if(top==-1)
+	{
+		printf("Stack is empty.\n");
+	}
+	else
+	{
+		printf("Elements of the stack are : ");
+		for(i=top;i>=0;i--)
+		{
+			printf("%d ",arr[i]);
+		}
+		printf("\n");
+	}
+}
+void isEmpty()
+{
+	if(top==-1)
+	{
+		printf("Stack is empty.\n");
+	}
+	else
+	{
+		printf("Stack is not empty.\n");
+	}
+}
+void peek()
+{
+	if(top==-1)
+	{
+		printf("Stack is underflow.\n");
+	}
+	else
+	{
+		printf("Peek value = %d\n",arr[top]);
+	}
+	
+}
+
+int main() {
+	int op, x;
+	while(1) {	
+		printf("1.Push 2.Pop 3.Display 4.Is Empty 5.Peek 6.Exit\n");
+		printf("Enter your option : ");
+		scanf("%d", &op);
+		switch(op) {
+			case 1: 
+				printf("Enter element : ");
+				scanf("%d", &x);
+				push(x);
+				break;
+			case 2:
+				pop();
+				break;
+			case 3: 
+				display();
+				break;
+			case 4:
+				isEmpty();
+				break;
+			case 5:
+				peek();
+				break;
+			case 6: 
+				exit(0);
+		}
+	}
 }

@@ -1,3 +1,8 @@
+/* 
+WAP to create 2 sets & implement Intersection operation on sets. 
+Name: Aman Kumar Verma
+Roll No. 2000300130016
+*/ 
 #include<stdio.h>                               
 int main()                                     
 {   int a[100],b[100],c[100],n1,n2,n,k=0,i,j;
