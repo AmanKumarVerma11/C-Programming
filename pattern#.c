@@ -58,7 +58,7 @@ int main()
     return 0;
 }
 
-/*
+/* method 2:
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
